@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using XFramework.UI;
+
+public class {0} : UIBase<{1}, {2}>
+{
+    public override UILayer GetLayer()
+    {
+        return UILayer.Center;
+    }
+
+    public override void OnEnter(params object[] args)
+    {
+        
+    }
+
+    public override void OnExit()
+    {
+        
+    }
+}

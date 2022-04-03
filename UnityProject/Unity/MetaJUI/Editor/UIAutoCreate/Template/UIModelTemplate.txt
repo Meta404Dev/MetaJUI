@@ -1,0 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XFramework.UI;
+
+public class {0} : IUIModel
+{
+	
+}

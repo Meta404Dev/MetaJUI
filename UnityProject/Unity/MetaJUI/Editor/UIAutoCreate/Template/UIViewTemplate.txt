@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using XFramework.UI;
+
+/// <summary>
+/// Auto Generate Class!!!
+/// </summary>
+public class {0} : IUIView
+{
+{1}
+	public void Init(GameObject go)
+	{
+{2}
+	}
+}
