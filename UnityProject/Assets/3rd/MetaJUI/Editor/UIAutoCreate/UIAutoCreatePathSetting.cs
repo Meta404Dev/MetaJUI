@@ -9,7 +9,7 @@ namespace XFramework.UI.Editor
         /// <summary>
         /// 插件路径
         /// </summary>
-        public const string PluginPath = "Assets/3rd/MetaFrameworkUI/";
+        public const string PluginPath = "Assets/3rd/MetaJUI/";
 
         /// <summary>
         /// 说明文档路径

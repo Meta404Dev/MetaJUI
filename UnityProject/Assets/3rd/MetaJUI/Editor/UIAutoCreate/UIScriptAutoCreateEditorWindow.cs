@@ -16,7 +16,7 @@ namespace XFramework.UI.Editor
 
 
 
-        [MenuItem("XTools/UI自动生成器 #&%U", false, 999)]
+        [MenuItem("MetaTools/UI自动生成器 #&%U", false, 999)]
         static void ShowEditor()
         {
             UIScriptAutoCreateEditorWindow window = GetWindow<UIScriptAutoCreateEditorWindow>();
@@ -67,7 +67,7 @@ namespace XFramework.UI.Editor
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("生成新的UI预制体", GUILayout.Width(600), GUILayout.Height(30)))
+            if (GUILayout.Button("生成UI预制体", GUILayout.Width(600), GUILayout.Height(30)))
             {
                 CreateUIPrefab();
             }
@@ -77,7 +77,7 @@ namespace XFramework.UI.Editor
 
             GUILayout.Space(50);
             GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("脚本自动生成设置", titleStyle, GUILayout.Width(600));
+            EditorGUILayout.LabelField("代码自动生成设置", titleStyle, GUILayout.Width(600));
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
@@ -86,14 +86,14 @@ namespace XFramework.UI.Editor
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("自动生成UI的View脚本", GUILayout.Width(600), GUILayout.Height(30)))
+            if (GUILayout.Button("生成View代码", GUILayout.Width(600), GUILayout.Height(30)))
             {
                 CreateUIView();
             }
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("自动生成UI的MVC脚本", GUILayout.Width(600), GUILayout.Height(30)))
+            if (GUILayout.Button("生成MVC代码", GUILayout.Width(600), GUILayout.Height(30)))
             {
                 CreateMVC();
             }
