@@ -46,6 +46,7 @@ UITool.OpenStack<UITip>();
 # MetaJUI优势
 - 使用简单，自动生成UI预制体，自动生成UI代码
 - 可以自定义UI模板
+- UI代码完全脱离Monobehavior，可以轻松的完成热更
 
 
 # Todo
