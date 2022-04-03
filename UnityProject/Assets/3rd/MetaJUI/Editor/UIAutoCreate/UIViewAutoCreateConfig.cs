@@ -9,12 +9,12 @@ namespace XFramework.UI.Editor
     public class UIViewAutoCreateInfo
     {
         /// <summary>
-        /// ÊôĞÔÃû
+        /// å±æ€§å
         /// </summary>
         public string propName;
 
         /// <summary>
-        /// ×é¼şÃû
+        /// ç»„ä»¶å
         /// </summary>
         public string comName;
     }
