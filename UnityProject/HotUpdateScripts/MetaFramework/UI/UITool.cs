@@ -42,5 +42,10 @@ namespace MetaFramework.UI
 
             UIManager.Instance.CloseNormal(uiName);
         }
+
+        public static void Clear() 
+        {
+            UIManager.Instance.Clear();
+        }
     }
 }

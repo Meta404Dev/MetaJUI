@@ -1,6 +1,7 @@
 
 
-# MetaJUI v0.3
+
+# MetaJUI v0.4
 
 MetaJUI是为JEngine定制的UI框架，当然你也可以通过很简单的修改，移植到自己的工程项目
 
@@ -99,6 +100,30 @@ GetView().scrollTestRect.InitData(100);
 - 生成目标UI的View代码
 
 
+## 9.使用红点系统
+
+初始化结构
+```
+RedPointNode mainNode = new RedPointNode("Main");
+
+RedPointNode mailNode = mainNode.AddChildNode("Mail");
+RedPointNode taskNode = mainNode.AddChildNode("Task");
+RedPointNode bagNode = mainNode.AddChildNode("Bag");
+
+mailNode.AddChildNode("Mail1");
+mailNode.AddChildNode("Mail2");
+mailNode.AddChildNode("Mail3");
+```
+
+注册红点数量变化事件
+```
+RedPointSystems rps = new RedPointSystems();
+rps.Register("Mail", (node) => { Debug.Log(node.pointCount); });
+```
+派发事件
+```
+rps.Dispatch("Mail", 100);
+```
 
 # MetaJUI优势
 - 使用简单，自动生成UI预制体，自动生成UI代码
@@ -106,13 +131,13 @@ GetView().scrollTestRect.InitData(100);
 - UI代码完全脱离Monobehavior，可以轻松的完成热更
 
 # 更新日志
-## v0.3
+## v0.4
 - 新增了虚拟列表
 - 新增了公共UI
+- 新增了红点系统
 
 
 # Todo
-- 红点系统
 - 常用的UI集合
 -- UI确认框
 -- UI消息Tip
