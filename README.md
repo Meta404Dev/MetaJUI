@@ -69,6 +69,16 @@ UITool.Clear();
 
 ## 7.使用虚拟列表
 
+因为热更层使用到了框架层的委托类型，第一次使用要进行ILRuntime的委托注册
+RegisterMethodDelegateHelper.Register()
+```
+appdomain.DelegateManager.RegisterMethodDelegate<Int32, GameObject>();
+```
+RegisterFunctionDelegateHelper.Register()
+```
+appdomain.DelegateManager.RegisterFunctionDelegate<Int32, Int32>();
+```
+
 设置好虚拟列表预制体**ScrollViewVertical**
 
 在热更层的UI打开界面进行注册
