@@ -1,4 +1,5 @@
-# MetaJUI v0.1
+
+# MetaJUI v0.2
 
 MetaJUI是为JEngine定制的UI框架，当然你也可以通过很简单的修改，移植到自己的工程项目
 
@@ -28,9 +29,30 @@ MetaJUI是为JEngine定制的UI框架，当然你也可以通过很简单的修�
 UITool.Open<UITest>();
 ```
 
+关闭普通UI
+```
+UITool.Close<UITest>();
+```
+
 打开栈UI
 ```
-UITool.OpenStack<UITip>();
+UITool.OpenStack<UITest1>();
+UITool.OpenStack<UITest2>();
+UITool.OpenStack<UITest3>();
+```
+关闭栈UI
+```
+UITool.CloseStack();
+UITool.CloseStack();
+UITool.CloseStack();
+```
+获取到一个UI
+```
+UITool.Get<UITest>();
+```
+清除所有UI，包括缓存
+```
+UITool.Clear();
 ```
 
 ## 5.自定义路径
@@ -38,19 +60,46 @@ UITool.OpenStack<UITip>();
 打开**Assets/3rd/MetaJUI/Editor/UIAutoCreate/UIAutoCreatePathSetting** 
 所有路径都可以自定义修改
 
-## 5.修改模板
+## 6.修改UI生成代码模板
 
 模板文件在**Assets/3rd/MetaJUI/Editor/UIAutoCreate/Template/**  目录下
 可以自由修改为你想要的模板
+
+## 7.使用虚拟列表
+
 
 # MetaJUI优势
 - 使用简单，自动生成UI预制体，自动生成UI代码
 - 可以自定义UI模板
 - UI代码完全脱离Monobehavior，可以轻松的完成热更
 
+# 更新日志
+## v0.2
+- 新增了虚拟列表
+
+设置好虚拟列表预制体**ScrollViewVertical**
+
+在热更层的UI打开界面进行注册
+
+注册高度
+```
+GetView().scrollTestRect.OnHeight += (index) => { return 150; };
+```
+注册刷新事件
+```
+GetView().scrollTestRect.OnFill += (index, go) =>
+        {
+            go.GetComponentInChildren<Text>().text = index.ToString();
+        };
+```
+初始化列表大小
+```
+GetView().scrollTestRect.InitData(100);
+```
+
+
 
 # Todo
-- 虚拟列表
 - 红点系统
 - 常用的UI集合
 -- UI确认框
