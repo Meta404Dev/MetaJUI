@@ -25,3 +25,5 @@ MonoBehaviour:
     comName: Image
   - propName: RawImg_
     comName: RawImage
+  - propName: Scroll_
+    comName: InfiniteScroll
