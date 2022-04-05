@@ -30,7 +30,7 @@ namespace XFramework.UI.Editor
 
             string tempStrFile = AssetDatabase.LoadAssetAtPath<TextAsset>(templatePath).text;
 
-            FindGoChild(uiRootGo.transform);
+            FindGoChild(uiRootGo.transform, true);
             if (allPropsDic.Count <= 0)
             {
                 Debug.Log("<color=#ff0000>组件数量为0，请确认组件命名是否正确！</color>");
@@ -81,12 +81,17 @@ namespace XFramework.UI.Editor
         }
 
 
-        private void FindGoChild(Transform ts)
+        private void FindGoChild(Transform ts, bool isRoot)
         {
-            CheckUIView(ts);
+            if (!isRoot)
+            {
+                CheckUIView(ts);
+                if (ts.name.StartsWith("UICommon")) return;
+            }
+
             for (int i = 0; i < ts.childCount; i++)
             {
-                FindGoChild(ts.GetChild(i));
+                FindGoChild(ts.GetChild(i), false);
             }
         }
 
@@ -94,6 +99,15 @@ namespace XFramework.UI.Editor
 
         private UIViewAutoCreateInfo FindComponentByConfig(string transName)
         {
+            if (transName.StartsWith("UICommon"))
+            {
+                var info = new UIViewAutoCreateInfo()
+                {
+                    comName = transName,
+                };
+                return info;
+            }
+
             for (int i = 0; i < config.uiInfoList.Count; i++)
             {
                 var info = config.uiInfoList[i];
@@ -111,8 +125,16 @@ namespace XFramework.UI.Editor
             if (info == null) return;
 
             //get final name
-            string[] childNames = child.name.Split('_');
-            string finalPropName = childNames[0].ToLower() + childNames[1];
+            string finalPropName;
+            if (child.name.StartsWith("UICommon"))
+            {
+                finalPropName = child.name;
+            }
+            else
+            {
+                string[] childNames = child.name.Split('_');
+                finalPropName = childNames[0].ToLower() + childNames[1];
+            }
 
             string strTempProp = string.Format("\tpublic {0} {1};\n", info.comName, finalPropName);
 

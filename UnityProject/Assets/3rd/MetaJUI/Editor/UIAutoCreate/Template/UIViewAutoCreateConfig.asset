@@ -26,4 +26,4 @@ MonoBehaviour:
   - propName: RawImg_
     comName: RawImage
   - propName: Scroll_
-    comName: InfiniteScroll
+    comName: Mopsicus.InfiniteScroll.InfiniteScroll

@@ -1,5 +1,6 @@
 
-# MetaJUI v0.2
+
+# MetaJUI v0.3
 
 MetaJUI是为JEngine定制的UI框架，当然你也可以通过很简单的修改，移植到自己的工程项目
 
@@ -67,16 +68,6 @@ UITool.Clear();
 
 ## 7.使用虚拟列表
 
-
-# MetaJUI优势
-- 使用简单，自动生成UI预制体，自动生成UI代码
-- 可以自定义UI模板
-- UI代码完全脱离Monobehavior，可以轻松的完成热更
-
-# 更新日志
-## v0.2
-- 新增了虚拟列表
-
 设置好虚拟列表预制体**ScrollViewVertical**
 
 在热更层的UI打开界面进行注册
@@ -97,6 +88,27 @@ GetView().scrollTestRect.OnFill += (index, go) =>
 GetView().scrollTestRect.InitData(100);
 ```
 
+
+
+## 8.使用公共UI
+
+公共UI需要以**UICommon**前缀命名，生成的代码也会将UI预制体的名字作为类名，所以需要避免重复
+- 将公共UI作为一个单独的预制体进行编辑
+- 编辑完了将公共UI拖入你想要的目标UI下面
+- 生成公共UI的MVC代码
+- 生成目标UI的View代码
+
+
+
+# MetaJUI优势
+- 使用简单，自动生成UI预制体，自动生成UI代码
+- 可以自定义UI模板
+- UI代码完全脱离Monobehavior，可以轻松的完成热更
+
+# 更新日志
+## v0.3
+- 新增了虚拟列表
+- 新增了公共UI
 
 
 # Todo
