@@ -44,7 +44,7 @@ namespace MetaFramework.UI
         public void Register(string nodeName, Action<RedPointNode> callBack)
         {
             var node = FindNode(nodeName);
-            if (node != null)
+            if (node == null)
             {
                 Debug.LogError("register failed! can not find the node:" + nodeName);
                 return;
@@ -61,7 +61,7 @@ namespace MetaFramework.UI
         public void Dispatch(string nodeName, int newCount)
         {
             var node = FindNode(nodeName);
-            if (node != null)
+            if (node == null)
             {
                 Debug.LogError("register failed! can not find the node:" + nodeName);
                 return;
