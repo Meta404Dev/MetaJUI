@@ -152,7 +152,9 @@ rps.Dispatch("Mail", 100);
 -- UI确认框
 -- UI消息Tip
 
-# 支付宝捐赠
+# 支持我
+- 通过支付宝请我喝一杯奶茶
+- 点击Star，你们的Star是我更新的动力
 
 # 友情链接
 [JEngine](https://github.com/JasonXuDeveloper/JEngine) 小白也能快速上手，轻松制作可以热更新的游戏
