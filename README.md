@@ -155,4 +155,4 @@ rps.Dispatch("Mail", 100);
 # 支付宝捐赠
 
 # 友情链接
-[JEngine](https://github.com/JasonXuDeveloper/JEngine)
+[JEngine](https://github.com/JasonXuDeveloper/JEngine) 小白也能快速上手，轻松制作可以热更新的游戏
