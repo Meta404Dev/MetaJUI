@@ -151,3 +151,8 @@ rps.Dispatch("Mail", 100);
 - 常用的UI集合
 -- UI确认框
 -- UI消息Tip
+
+# 支付宝捐赠
+
+# 友情链接
+[JEngine](https://github.com/JasonXuDeveloper/JEngine)
