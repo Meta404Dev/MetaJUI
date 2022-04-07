@@ -112,27 +112,77 @@ GetView().scrollTestRect.InitData(100);
 
 ## 9.使用红点系统
 
-初始化结构
+初始化结构（以我自己的项目为例, RedPointSystemConst为一个枚举）
 ```
-RedPointNode mainNode = new RedPointNode("Main");
+        RedPointNode mainNode = new RedPointNode(RedPointSystemConst.main.ToString());
+        {
+            //家园
+            RedPointNode jiayuanNode = mainNode.AddChildNode(RedPointSystemConst.家园.ToString());
+            {
+                //仓库
+                RedPointNode cangkuNode = jiayuanNode.AddChildNode(RedPointSystemConst.家园_仓库.ToString());
+                {
+                    cangkuNode.AddChildNode(RedPointSystemConst.家园_仓库_装备.ToString());
+                }
 
-RedPointNode mailNode = mainNode.AddChildNode("Mail");
-RedPointNode taskNode = mainNode.AddChildNode("Task");
-RedPointNode bagNode = mainNode.AddChildNode("Bag");
+                //孵化槽
+                RedPointNode fuhuacaoNode = jiayuanNode.AddChildNode(RedPointSystemConst.家园_孵化槽.ToString());
+                {
+                    fuhuacaoNode.AddChildNode(RedPointSystemConst.家园_孵化槽_孵化蛋.ToString());
+                    fuhuacaoNode.AddChildNode(RedPointSystemConst.家园_孵化槽_抽奖券.ToString());
+                    fuhuacaoNode.AddChildNode(RedPointSystemConst.家园_孵化槽_配对.ToString());
+                }
+            }
 
-mailNode.AddChildNode("Mail1");
-mailNode.AddChildNode("Mail2");
-mailNode.AddChildNode("Mail3");
+            //宠物
+            RedPointNode chongwuNode = mainNode.AddChildNode(RedPointSystemConst.宠物.ToString());
+            {
+                //宠物卡片
+                RedPointNode kapianNode = chongwuNode.AddChildNode(RedPointSystemConst.宠物_卡片.ToString());
+                {
+                    RedPointNode kapianshuxingNode = kapianNode.AddChildNode(RedPointSystemConst.宠物_卡片_详情属性.ToString());
+                    {
+                        kapianshuxingNode.AddChildNode(RedPointSystemConst.宠物_卡片_详情属性_升级.ToString());
+                    }
+                    kapianNode.AddChildNode(RedPointSystemConst.宠物_卡片_详情进化.ToString());
+                    kapianNode.AddChildNode(RedPointSystemConst.宠物_卡片_详情觉醒.ToString());
+                }
+            }
+        }
+        
+        rps = new RedPointSystems();
+        rps.Init(mainNode);
 ```
 
 注册红点数量变化事件
 ```
-RedPointSystems rps = new RedPointSystems();
-rps.Register("Mail", (node) => { Debug.Log(node.pointCount); });
+
+        RedPointSystemManager.Ins.rps.Register(RedPointSystemConst.家园.ToString(), (node) =>
+        {
+                ShowRedPoint(node.pointCount > 0);
+        });
+        
+        ...
+        
+        RedPointSystemManager.Ins.rps.Register(RedPointSystemConst.家园_仓库.ToString(), (node) =>
+        {
+                ShowRedPoint(node.pointCount > 0);
+        });
+        
+        ...
+        
+        RedPointSystemManager.Ins.rps.Register(RedPointSystemConst.家园_仓库_装备.ToString(), (node) =>
+        {
+                ShowRedPoint(node.pointCount > 0);
+        });
 ```
 派发事件
 ```
-rps.Dispatch("Mail", 100);
+
+        RedPointSystemManager.Ins.rps.Dispatch(
+            RedPointSystemConst.家园_仓库_装备.ToString(),
+            PlayerData.GetNewItemData());
+
 ```
 
 # MetaJUI优势
