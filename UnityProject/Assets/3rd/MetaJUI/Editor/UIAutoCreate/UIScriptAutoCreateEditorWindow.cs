@@ -16,12 +16,12 @@ namespace XFramework.UI.Editor
 
 
 
-        [MenuItem("MetaTools/UI×Ô¶¯Éú³ÉÆ÷ #&%U", false, 999)]
+        [MenuItem("MetaTools/UIè‡ªåŠ¨ç”Ÿæˆå™¨ #&%U", false, 999)]
         static void ShowEditor()
         {
             UIScriptAutoCreateEditorWindow window = GetWindow<UIScriptAutoCreateEditorWindow>();
             window.minSize = new Vector2(600, 300);
-            window.titleContent.text = "UI×Ô¶¯Éú³ÉÆ÷";
+            window.titleContent.text = "UIè‡ªåŠ¨ç”Ÿæˆå™¨";
 
             var readMe = AssetDatabase.LoadAssetAtPath<TextAsset>(UIAutoCreatePathSetting.ReadMeFilePath);
             readMeText = readMe.text;
@@ -29,7 +29,7 @@ namespace XFramework.UI.Editor
 
         private void OnGUI()
         {
-            #region GUIStyle ÉèÖÃ
+            #region GUIStyle è®¾ç½®
             Color fontColor = new Color(179f / 255f, 179f / 255f, 179f / 255f, 1f);
 
             //GUIStyle gl = "Toggle";
@@ -58,16 +58,16 @@ namespace XFramework.UI.Editor
 
             GUILayout.Space(50);
             GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Ô¤ÖÆÌå×Ô¶¯Éú³ÉÉèÖÃ", titleStyle, GUILayout.Width(600));
+            EditorGUILayout.LabelField("é¢„åˆ¶ä½“è‡ªåŠ¨ç”Ÿæˆè®¾ç½®", titleStyle, GUILayout.Width(600));
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("ĞÂUIµÄÃû×Ö", leftStyle, GUILayout.Width(150));
+            EditorGUILayout.LabelField("æ–°UIçš„åå­—", leftStyle, GUILayout.Width(150));
             NewUIName = EditorGUILayout.TextField(NewUIName, GUILayout.Width(350));
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Éú³ÉUIÔ¤ÖÆÌå", GUILayout.Width(600), GUILayout.Height(30)))
+            if (GUILayout.Button("ç”ŸæˆUIé¢„åˆ¶ä½“", GUILayout.Width(600), GUILayout.Height(30)))
             {
                 CreateUIPrefab();
             }
@@ -77,23 +77,23 @@ namespace XFramework.UI.Editor
 
             GUILayout.Space(50);
             GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("´úÂë×Ô¶¯Éú³ÉÉèÖÃ", titleStyle, GUILayout.Width(600));
+            EditorGUILayout.LabelField("ä»£ç è‡ªåŠ¨ç”Ÿæˆè®¾ç½®", titleStyle, GUILayout.Width(600));
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("View¸ù½Úµã:", leftStyle, GUILayout.Width(150));
+            EditorGUILayout.LabelField("Viewæ ¹èŠ‚ç‚¹:", leftStyle, GUILayout.Width(150));
             uiRootGo = (GameObject)EditorGUILayout.ObjectField(uiRootGo, typeof(GameObject), true);
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Éú³ÉView´úÂë", GUILayout.Width(600), GUILayout.Height(30)))
+            if (GUILayout.Button("ç”ŸæˆViewä»£ç ", GUILayout.Width(600), GUILayout.Height(30)))
             {
                 CreateUIView();
             }
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Éú³ÉMVC´úÂë", GUILayout.Width(600), GUILayout.Height(30)))
+            if (GUILayout.Button("ç”ŸæˆMVCä»£ç ", GUILayout.Width(600), GUILayout.Height(30)))
             {
                 CreateMVC();
             }
@@ -105,7 +105,7 @@ namespace XFramework.UI.Editor
 
         private void CreateUIPrefab()
         {
-            if (string.IsNullOrEmpty(NewUIName)) throw new System.Exception("ÇëÊäÈëUIÃû×Ö");
+            if (string.IsNullOrEmpty(NewUIName)) throw new System.Exception("è¯·è¾“å…¥UIåå­—");
 
             string newPrefabPath = UIAutoCreatePathSetting.PrefabTemplatePath.Replace("UITemplate", NewUIName);
 
@@ -124,7 +124,7 @@ namespace XFramework.UI.Editor
             bool result = false;
             if (File.Exists(newPrefabFullPath))
             {
-                if (EditorUtility.DisplayDialog("¾¯¸æ", "¼ì²âµ½UIÔ¤ÖÆÌå£¬ÊÇ·ñ¸²¸Ç", "È·¶¨", "È¡Ïû"))
+                if (EditorUtility.DisplayDialog("è­¦å‘Š", "æ£€æµ‹åˆ°UIé¢„åˆ¶ä½“ï¼Œæ˜¯å¦è¦†ç›–", "ç¡®å®š", "å–æ¶ˆ"))
                 {
                     File.Copy(originPrefabFullPath, newPrefabFullPath, true);
                     File.Copy(originMetaFullPath, newMetaFullPath, true);
@@ -140,7 +140,7 @@ namespace XFramework.UI.Editor
 
             if (result)
             {
-                Debug.Log("UI´´½¨³É¹¦: " + newPrefabPath);
+                Debug.Log("UIåˆ›å»ºæˆåŠŸ: " + newPrefabPath);
                 AssetDatabase.Refresh();
 
                 string newUIFullPath = newPrefabPath + strPrefab;
@@ -156,7 +156,7 @@ namespace XFramework.UI.Editor
         }
         private void CreateUIView()
         {
-            if (uiRootGo == null) throw new System.Exception("ÇëÍÏÈëĞèÒªÉú³ÉµÄUIÔ¤ÖÆÌå");
+            if (uiRootGo == null) throw new System.Exception("è¯·æ‹–å…¥éœ€è¦ç”Ÿæˆçš„UIé¢„åˆ¶ä½“");
 
             string uiName = GetUIName();
             string tempPath = UIAutoCreatePathSetting.TemplateFilePath + UIAutoCreatePathSetting.ViewTemplateName;
@@ -166,7 +166,7 @@ namespace XFramework.UI.Editor
         }
         private void CreateUIControl()
         {
-            if (uiRootGo == null) throw new System.Exception("ÇëÍÏÈëĞèÒªÉú³ÉµÄUIÔ¤ÖÆÌå");
+            if (uiRootGo == null) throw new System.Exception("è¯·æ‹–å…¥éœ€è¦ç”Ÿæˆçš„UIé¢„åˆ¶ä½“");
 
             string uiName = GetUIName();
             string tempPath = UIAutoCreatePathSetting.TemplateFilePath + UIAutoCreatePathSetting.ControlTemplateName;
@@ -176,7 +176,7 @@ namespace XFramework.UI.Editor
         }
         private void CreateUIModel()
         {
-            if (uiRootGo == null) throw new System.Exception("ÇëÍÏÈëĞèÒªÉú³ÉµÄUIÔ¤ÖÆÌå");
+            if (uiRootGo == null) throw new System.Exception("è¯·æ‹–å…¥éœ€è¦ç”Ÿæˆçš„UIé¢„åˆ¶ä½“");
 
             string uiName = GetUIName();
             string tempPath = UIAutoCreatePathSetting.TemplateFilePath + UIAutoCreatePathSetting.ModelTemplateName;
